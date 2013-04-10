@@ -43,7 +43,7 @@ class LanguagePack::Rack < LanguagePack::Ruby
 private
 
   def install_varnish
-    varnish_asset_url = "https://s3-eu-west-1.amazonaws.com/buildpack-assets/varnish-3.0.3-bin.tgz"
+    varnish_asset_url = "http://s3-eu-west-1.amazonaws.com/buildpack-assets/varnish-3.0.3-bin.tgz"
     varnish_archive = './varnish.tgz'
 
     download(varnish_asset_url, varnish_archive)
