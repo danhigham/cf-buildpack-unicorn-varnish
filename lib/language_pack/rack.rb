@@ -17,12 +17,9 @@ class LanguagePack::Rack < LanguagePack::Ruby
   end
 
   def compile
-
-    super # compile everthing for LanguagePack::Ruby
-
+    super
     install_varnish
     write_unicorn_config
-
   end
 
   def default_config_vars
@@ -43,6 +40,8 @@ class LanguagePack::Rack < LanguagePack::Ruby
 private
 
   def install_varnish
+    topic("Installing Varnish")
+
     varnish_asset_url = "http://s3-eu-west-1.amazonaws.com/buildpack-assets/varnish-3.0.3-bin.tgz"
     varnish_archive = './varnish.tgz'
 
@@ -53,6 +52,7 @@ private
     FileUtils.mkdir_p bin_dir
 
     Dir["./varnish/*"].each do |bin|
+      puts bin
       run("ln -s #{bin} #{bin_dir}")
     end
 
