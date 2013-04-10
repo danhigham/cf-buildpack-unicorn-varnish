@@ -3,8 +3,7 @@ require "pathname"
 # General Language Pack module
 module LanguagePack
 
-  # LANG_PACKS = %w{ NoLockfile Rails4 Rails3 Rails2 Rack Ruby }
-  LANG_PACKS = %w{ NoLockfile Rack }
+  LANG_PACKS = [NoLockfile, Rack]
 
   # detects which language pack to use
   # @param [Array] first argument is a String of the build directory
