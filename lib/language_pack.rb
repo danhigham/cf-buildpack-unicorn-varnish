@@ -3,15 +3,13 @@ require "pathname"
 # General Language Pack module
 module LanguagePack
 
-  LANG_PACKS = [NoLockfile, Rack]
-
   # detects which language pack to use
   # @param [Array] first argument is a String of the build directory
   # @return [LanguagePack] the {LanguagePack} detected
   def self.detect(*args)
     Dir.chdir(args.first)
 
-    pack = LANG_PACKS.detect do |klass|
+    pack = [NoLockfile, Rack].detect do |klass|
       klass.use?
     end
 
