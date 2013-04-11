@@ -17,8 +17,9 @@ class LanguagePack::Rack < LanguagePack::Ruby
   end
 
   def compile
-    super
     install_varnish
+
+    super
     # write_unicorn_config
   end
 
@@ -41,6 +42,8 @@ class LanguagePack::Rack < LanguagePack::Ruby
 private
 
   def install_varnish
+    Dir.chdir(build_path)
+
     topic("Installing Varnish")
 
     varnish_asset_url = "http://s3-eu-west-1.amazonaws.com/buildpack-assets/varnish-3.0.3-bin.tgz"
