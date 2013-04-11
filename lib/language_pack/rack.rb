@@ -30,7 +30,8 @@ class LanguagePack::Rack < LanguagePack::Ruby
 
   def default_process_types
     # let's special case thin here if we detect it
-    web_process = "bundle exec unicorn -p $PORT"
+    # web_process = "bundle exec unicorn -p $PORT"
+    web_process = "varnishd -a 0.0.0.0:8080 -d -n ../varnish_tmp"
 
     super.merge({
       "web" => web_process
@@ -51,10 +52,16 @@ private
     bin_dir = "bin"
     FileUtils.mkdir_p bin_dir
 
+    tmp_dir = "varnish_tmp"
+    FileUtils.mkdir_p tmp_dir
+
+
     Dir["./varnish/*"].each do |bin|
       puts bin
       run("ln -s #{bin} ./#{bin_dir}/")
     end
+
+    run("rm #{varnish_archive}")
 
   end
 
