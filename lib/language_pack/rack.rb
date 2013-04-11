@@ -17,9 +17,9 @@ class LanguagePack::Rack < LanguagePack::Ruby
   end
 
   def compile
+    super
     install_varnish
 
-    super
     # write_unicorn_config
   end
 
