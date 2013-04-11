@@ -32,7 +32,7 @@ class LanguagePack::Rack < LanguagePack::Ruby
   def default_process_types
     # let's special case thin here if we detect it
     # web_process = "bundle exec unicorn -p $PORT"
-    web_process = "/app/bin/varnishd -a 0.0.0.0:$PORT -d -n ../varnish_tmp"
+    web_process = "varnishd -a 0.0.0.0:$PORT -d -n ../varnish_tmp"
 
     super.merge({
       "web" => web_process
