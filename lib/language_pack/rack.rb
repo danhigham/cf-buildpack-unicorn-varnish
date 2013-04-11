@@ -53,7 +53,7 @@ private
 
     Dir["./varnish/*"].each do |bin|
       puts bin
-      # run("ln -s #{bin} #{bin_dir}")
+      run("ln -s #{bin} ./#{bin_dir}/")
     end
 
   end
