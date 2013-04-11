@@ -23,8 +23,6 @@ class LanguagePack::Base
     @id = Digest::SHA1.hexdigest("#{Time.now.to_f}-#{rand(1000000)}")[0..10]
 
     Dir.chdir build_path
-
-    puts "Building in #{build_path}"
   end
 
   def self.===(build_path)

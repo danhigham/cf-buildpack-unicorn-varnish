@@ -17,10 +17,13 @@ class LanguagePack::Rack < LanguagePack::Ruby
   end
 
   def compile
-    super
     install_varnish
 
-    # write_unicorn_config
+    configure_unicorn
+    configure_varnish
+
+    super
+
   end
 
   def default_config_vars
@@ -68,7 +71,11 @@ private
 
   end
 
-  def write_unicorn_config
+  def configure_unicorn
+
+  end
+
+  def configure_varnish
 
   end
 
